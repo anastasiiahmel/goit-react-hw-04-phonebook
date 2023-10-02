@@ -64,12 +64,9 @@ export const App = () => {
   
   const [filter, setFilter] = useState('');
 
-  const deleteContact = contactId => {
-    setContacts({
-      contacts: contacts.filter(contact => contact.id !== contactId),
-    });
-  };
-  
+const deleteContact = (contactId) => {
+  setContacts((prevContacts) => prevContacts.filter((contact) => contact.id !== contactId));
+};
   
  const filterByString = (field, filterValue) => {
     return field.toLowerCase().trim().includes(filterValue.toLowerCase().trim()
@@ -87,11 +84,10 @@ export const App = () => {
   
     
     
-  const onFilterChange = (event) => {
-    const { value } = event.target.value; // деструктурируем значение из объекта event.target
-    setFilter(value);
-  
-  }
+const onFilterChange = (event) => {
+  const { value } = event.target; // Не нужно деструктурировать
+  setFilter(value);
+};
   
 
   const onLengthCheck = () =>{
